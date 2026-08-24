@@ -87,3 +87,55 @@ Through this project, I gained hands-on experience with:
 
 Aspiring Data Engineer
 
+
+securities-pricing-data-pipeline/
+│
+├── README.md
+│
+├── 1_historical_load/
+│   ├── extract_historical_data.py
+│   ├── init_snowflake_objects.sql
+│   ├── load_transform_historical_data.sql
+│   └── polygon_eod_grouped_20251017_20251024.csv
+│
+├── 2_daily_load/
+│   ├── dags/
+│   │   ├── get_securities_data.py
+│   │   ├── lib/
+│   │   │   ├── eod_data_downloader.py
+│   │   │   └── slack_utils.py
+│   │   ├── sql/
+│   │   │   ├── 1. copy_to_raw.sql
+│   │   │   ├── 2. check_loaded.sql
+│   │   │   ├── 3. premerge_metrics.sql
+│   │   │   ├── 4. merge_core.sql
+│   │   │   ├── 5. merge_dim_security.sql
+│   │   │   ├── 6. dm_dim_date.sql
+│   │   │   ├── 7. merge_fact_daily_price.sql
+│   │   │   └── 8. postmerge_metrics.sql
+│   │   ├── test_aws_conn.py
+│   │   ├── test_slack_conn.py
+│   │   └── test_snowflake_conn.py
+│   ├── load_daily_eod_prices.sql
+│   └── requirements.txt
+│
+├── 3_reject_table_scenario/
+│   ├── 3. premerge_metrics.sql
+│   ├── 4. merge_core.sql
+│   ├── eod_data_downloader.py
+│   ├── get_securities_data.py
+│   └── reject_table_creation.sql
+│
+├── 4_dashboarding/
+│   ├── securities_market_insights.pbix
+│   ├── securities_pricing_views_meta_data.csv
+│   ├── security_attributes.csv
+│   └── sec_pricing_views.sql
+│
+└── resources/
+    ├── problem_statement.pdf
+    ├── project_architecture.png
+    ├── RBF_EOD_Pricing_Analytics_SOW.pdf
+    ├── securities_market_report1.jpg
+    └── securities_market_report2.jpg
+
